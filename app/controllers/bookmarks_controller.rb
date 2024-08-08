@@ -14,6 +14,7 @@ class BookmarksController < ApplicationController
     if @bookmark.save
       redirect_to @list
     else
+      @movies = Movie.all
       render :new, status: :unprocessable_entity
     end
   end
