@@ -10,11 +10,16 @@
     <ul class="list-group list-group-flush mt-3">
       <% @list.bookmarks.each do |bookmark| %>
         <li class="list-group-item d-flex justify-content-between p-3 gap-4 align-items-center">
-          <%= bookmark.movie.title %>
           <%= link_to bookmark_path(bookmark),
           data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
           <i style="color: #3c3c3c;" class="fa-solid fa-trash-can"></i>
           <% end %>
+          <div class = "d-flex justify-content-between p-3 gap-4 align-items-center"
+            style="box-shadow: 0 0 4px 4px #f4f4f4 inset; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+            url(<%= bookmark.movie.poster_url %>)", >
+          </div>
+          <%= bookmark.movie.title %>
+          <div class="box"> <%= bookmark.movie.overview %> </div>
         </li>
       <% end %>
     </ul>
