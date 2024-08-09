@@ -9,6 +9,9 @@
       <div class="col-3">
         <%= f.input :name, label: false, placeholder: "Name Your List"%>
       </div>
+      <div class="col-3">
+        <%= f.input :photo, as: :file %>
+      </div>
       <div class="col-2">
         <%= f.button :submit, class: "btn btn-primary" %>
       </div>
