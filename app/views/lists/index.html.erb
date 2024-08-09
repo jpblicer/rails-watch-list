@@ -6,16 +6,15 @@
   <main class="d-flex justify-content-around">
     <ul class="list-group list-group-flush mt-3">
       <% @lists.each do |list| %>
-        <li class="list-group-item d-flex justify-content-between p-3 gap-4 align-items-center">
-          <%= link_to list.name, list_path(list) %>
-          <span class="badge text-bg-primary rounded-pill"> <%= list.bookmarks.length %> </span>
+        <li class="list-group-item">
 
-          <% if list.photo.attached? %>
-            <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill  %>
-          <% else %>
-            <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
-          <% end %>
+          <div class = "d-flex justify-content-between p-3 gap-4 align-items-center"
+            style="box-shadow: 0 0 8px 8px #f4f4f4 inset; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+            url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : image_path('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU') %>)", >
+            <%= link_to list.name, list_path(list), style: "text-decoration: none; text-shadow: 1px 1px 2px black, 0 0 1px grey, 0 0 0.2px grey; font-weight: 900" %>
+            <span class="badge text-bg-primary rounded-pill"> <%= list.bookmarks.length %> </span>
 
+          </div>
         </li>
       <% end %>
     </ul>
